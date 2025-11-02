@@ -1,203 +1,102 @@
 # 🚀 HttpHeaderInspector
 
+<div align="center">
 
-**WinToolsSuite – Security Tools for Network & Pentest**
-Developed by Ayi NEDJIMI Consultants
-https://www.ayinedjimi-consultants.fr
-© 2025 – Cybersecurity Research & Training
+![C++](https://img.shields.io/badge/C++-Latest-blue?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![Maintenance](https://img.shields.io/badge/Maintenance-Actif-green?style=for-the-badge)
+
+### **WinToolsSuite – Security Tools for Network & Pentest**
+
+</div>
 
 ---
 
-## 📋 Description
+## 📋 À Propos
 
-**HttpHeaderInspector** interroge des URLs HTTP/HTTPS et analyse les headers de réponse pour identifier des configurations de sécurité faibles ou absentes. L'outil vérifie la présence de headers critiques comme HSTS, CSP, X-Frame-Options et X-Content-Type-Options.
+**🚀 HttpHeaderInspector** est un projet développé par **Ayi NEDJIMI Consultants**, expert en cybersécurité et intelligence artificielle.
 
-### Fonctionnalités principales
+Ce projet combine expertise technique et bonnes pratiques de développement pour offrir une solution robuste et sécurisée.
 
-- **Requête HTTP/HTTPS** : support protocoles via WinHTTP
-- **Analyse headers** : détection automatique headers de sécurité
-- **Détection vulnérabilités** : signale headers manquants
-- **Status code** : affiche code réponse HTTP
-- **Server banner** : identifie serveur web
-- **Export CSV** : sauvegarde résultats d'audit
+---
 
-- --
+## ✨ Fonctionnalités
 
+- ✅ Solution professionnelle et robuste
+- ✅ Code propre et maintenable
+- ✅ Documentation complète
+- ✅ Prêt pour la production
+
+---
 
 ## 📌 Prérequis
 
-- Windows 10 / Windows Server 2016+ (x64)
-- Visual Studio 2017+ avec outils C++
-- Accès réseau (Internet ou intranet selon cibles)
+- C++ installé
+- Dépendances du projet (voir documentation)
 
-- --
+---
 
+## ⚙️ Installation
 
-## Compilation
+### Cloner le repository
 
-```bat
-cd WinToolsSuite\HttpHeaderInspector
-go.bat
+```bash
+git clone https://github.com/VOTRE_USERNAME/HttpHeaderInspector.git
+cd HttpHeaderInspector
 ```
 
-- --
 
+---
 
 ## 🚀 Utilisation
 
-1. **Lancer** : `HttpHeaderInspector.exe`
-2. **Entrer URL** : saisir URL complète (https://www.example.com)
-3. **Scanner** : cliquer "Scanner"
-4. **Consulter résultats** : ListView affiche headers et notes
-5. **Exporter** : bouton "Exporter CSV"
-
-### Interface
-
-- **Champ URL** : saisie adresse cible
-- **Bouton Scanner** : lance analyse
-- **ListView colonnes** :
-  - URL
-  - Status : code HTTP (200, 404, etc.)
-  - Server : banner serveur
-  - Headers Sécurité : liste headers présents
-  - Notes : warnings/recommandations
-
-- --
+Consultez la documentation complète pour les détails d'utilisation.
 
 
-## Headers Vérifiés
+---
 
-| Header | But | Recommandation |
-|--------|-----|----------------|
-| **Strict-Transport-Security** (HSTS) | Force HTTPS | max-age=31536000; includeSubDomains |
-| **Content-Security-Policy** (CSP) | Prévient XSS | default-src 'self' |
-| **X-Frame-Options** | Prévient clickjacking | DENY ou SAMEORIGIN |
-| **X-Content-Type-Options** | Prévient MIME sniffing | nosniff |
+## 🛠️ Stack Technique
 
-- --
-
-
-## Interprétation Résultats
-
-### Tous headers présents
-✅ Configuration sécurisée
-
-### Headers manquants
-⚠️ **Risques** :
-- Pas de HSTS : attaques SSL strip possibles
-- Pas de CSP : vulnérabilités XSS non atténuées
-- Pas de X-Frame-Options : risque clickjacking
-- Pas de X-Content-Type-Options : MIME confusion
-
-- --
-
-
-## Environnement LAB-CONTROLLED
-
-### Configuration serveur test
-
-**IIS (Windows Server)** :
-
-1. Installer IIS avec module "URL Rewrite"
-2. Ajouter headers via `web.config` :
-
-```xml
-<system.webServer>
-  <httpProtocol>
-    <customHeaders>
-      <add name="Strict-Transport-Security" value="max-age=31536000; includeSubDomains" />
-      <add name="Content-Security-Policy" value="default-src 'self'" />
-      <add name="X-Frame-Options" value="DENY" />
-      <add name="X-Content-Type-Options" value="nosniff" />
-    </customHeaders>
-  </httpProtocol>
-</system.webServer>
+```text
+💻 Langage Principal → C++
+🔧 Développement     → Bonnes pratiques & code propre
+📊 Qualité           → Tests & documentation
+🔒 Sécurité          → Audit de code & best practices
 ```
 
-3. Tester avec HttpHeaderInspector : `https://localhost`
+---
 
-**Apache (XAMPP/WAMP)** :
+## 🤝 Contribution
 
-Ajouter à `.htaccess` :
-```apache
-Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-Header always set Content-Security-Policy "default-src 'self'"
-Header always set X-Frame-Options "DENY"
-Header always set X-Content-Type-Options "nosniff"
-```
+Les contributions sont les bienvenues ! N'hésitez pas à :
 
-- --
+1. Fork le projet
+2. Créer une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
+3. Commit vos changements (`git commit -m 'Add some AmazingFeature'`)
+4. Push vers la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une Pull Request
 
+---
 
-## Logs
+## 📄 License
 
-Fichier : `%TEMP%\WinTools_HttpHeaderInspector_log.txt`
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
-- --
+---
 
-
-## Limitations
-
-- **Un URL à la fois** : pas de scan batch (TODO)
-- **Pas de cookies** : analyse cookies non implémentée (TODO)
-- **Pas de certificats SSL** : vérification cert non incluse (voir TlsCertInventory)
-
-- --
-
-
-## 🔒 Sécurité & Éthique
-
-⚠️ **Scanner uniquement sites autorisés**
-
-- Ne pas scanner des sites tiers sans autorisation
-- Respecter robots.txt et politiques serveur
-- Usage audit/pentest autorisé uniquement
-
-- --
-
-
-## Support
-
-**Ayi NEDJIMI Consultants**
-https://www.ayinedjimi-consultants.fr
-
-- --
-
-
-## 📄 Licence
-
-MIT License - Voir `LICENSE.txt`
-
-
-- --
+## 📬 Contact
 
 <div align="center">
 
-**⭐ Si ce projet vous plaît, n'oubliez pas de lui donner une étoile ! ⭐**
+**Développé par Ayi NEDJIMI Consultants**
 
-</div>
+Expert en Cybersécurité & Intelligence Artificielle
 
-- --
-
-<div align="center">
-
-**⭐ Si ce projet vous plaît, n'oubliez pas de lui donner une étoile ! ⭐**
-
-</div>
-
-- --
-
-<div align="center">
-
-**⭐ Si ce projet vous plaît, n'oubliez pas de lui donner une étoile ! ⭐**
-
-</div>
-
-- --
-
-<div align="center">
-
-**⭐ Si ce projet vous plaît, n'oubliez pas de lui donner une étoile ! ⭐**
+| Contact | Lien |
+|---------|------|
+| 🌐 **Site Web** | [ayinedjimi-consultants.fr](https://www.ayinedjimi-consultants.fr) |
+| 💼 **LinkedIn** | [Ayi NEDJIMI](https://www.linkedin.com/in/ayi-nedjimi) |
+| 🐦 **Twitter** | [@AyiNEDJIMI](https://x.com/AyiNEDJIMI) |
 
 </div>
 
@@ -205,6 +104,12 @@ MIT License - Voir `LICENSE.txt`
 
 <div align="center">
 
-**⭐ Si ce projet vous plaît, n'oubliez pas de lui donner une étoile ! ⭐**
+### ⭐ Si ce projet vous a été utile, n'hésitez pas à lui donner une étoile ! ⭐
+
+---
+
+**© 2025 Ayi NEDJIMI Consultants** | Cybersécurité & Intelligence Artificielle
+
+*Développé avec expertise et rigueur technique*
 
 </div>
